@@ -69,6 +69,9 @@ local Window = WindUI:CreateWindow({
 
 local AimTab = Window:Tab({ Title = "Aimbot", Icon = "target" })
 local EspTab = Window:Tab({ Title = "ESP Visuals", Icon = "eye" })
+local OtherTab = Window:Tab({
+	Title = "Other Scripts",
+	icon = "door open"
 
 AimTab:Toggle({
     Title = "Enable Aimbot",
@@ -327,3 +330,12 @@ RunService.Heartbeat:Connect(function()
         end
     end
 end)
+
+local GearTowerScButton = OtherTab:Button({
+	title = "Gear Tower Script!",
+	Desc = "Get All Items You Wants, Coins and admin!!",
+	locked = false,
+	Callback = function()
+		loadstring(game:HttpGet("https://github.com/abd75x6v777/X-View-HUB/raw/refs/heads/main/Gear%20Tower%20,/Script.lua"))()
+	end
+})
