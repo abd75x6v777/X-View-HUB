@@ -330,12 +330,3 @@ RunService.Heartbeat:Connect(function()
         end
     end
 end)
-
-local GearTowerScButton = OtherTab:Button({
-	title = "Gear Tower Script!",
-	Desc = "Get All Items You Wants, Coins and admin!!",
-	locked = false,
-	Callback = function()
-		loadstring(game:HttpGet("https://github.com/abd75x6v777/X-View-HUB/raw/refs/heads/main/Gear%20Tower%20,/Script.lua"))()
-	end
-})
