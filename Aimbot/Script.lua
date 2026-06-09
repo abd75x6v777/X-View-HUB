@@ -337,6 +337,6 @@ local GearTowerScButton = OtherTab:Button({
 	Desc = "Get All Items You Wants, Coins and admin!!.",
 	locked = false,
 	Callback = function()
-		loadstring(game:HttpGet("https://github.com/abd75x6v777/X-View-HUB/raw/refs/heads/main/Gear%20Tower%20,/Script.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/abd75x6v777/X-View-HUB/refs/heads/main/Gear%20Tower%20%2C/Script.lua"))()
 	end
 })
