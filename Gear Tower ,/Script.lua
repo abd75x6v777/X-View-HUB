@@ -102,15 +102,21 @@ AdminSection:Button({
 })
 
 AdminSection:Button({
-    Title = "Get 8K Free Coins",
-    Desc = "Add 8,000 coins to your in-game balance",
+    Title = "Get 12.5K Free Coins",
+    Desc = "Add 12.5k coins to your in-game balance",
     Callback = function()
-        local args = {"claimCoins", "8kCoinsGiver"}
-        mapManagerRemote:FireServer(unpack(args))
-        
+        local args1 = {"claimCoins", "8kCoinsGiver"}
+        mapManagerRemote:FireServer(unpack(args1))
+        Wait(0.5)
+        local args2 = {"claimCoins", "2kCoinsGiver"}
+        mapManagerRemote:FireServer(unpack(args2))
+        Wait(0.5)
+        local args3 = {"claimCoins", "2.5kCoinsGiver"}
+        mapManagerRemote:FireServer(unpack(args3))
+        Wait(0.2)
         WindUI:Notify({
             Title = "Success",
-            Content = "8,000 coins added successfully!",
+            Content = "12.5k coins added successfully!",
             Duration = 3
         })
     end
