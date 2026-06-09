@@ -1,114 +1,131 @@
--- استدعاء مكتبة WindUI لبناء الواجهات الاحترافية عبر الإنترنت
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
 
--- تعريف أحداث السيرفر (RemoteEvents) لضمان سرعة التنفيذ وتقليل تكرار الكود
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local mapManagerRemote = ReplicatedStorage:WaitForChild("RemoteEvents"):WaitForChild("mapManagerRemote")
 
--- 1. إنشاء النافذة الرئيسية للواجهة وتخصيص مظهرها
 local Window = WindUI:CreateWindow({
-    Title = "Gear Tower Hub",       -- عنوان الواجهة الرئيسي
-    Icon = "gamepad",               -- أيقونة النافذة
-    Author = "Programming Expert",   -- اسم المطور
-    Folder = "GearTowerConfig",      -- المجلد المخصص لحفظ إعدادات المستخدم تلقائياً
-    Size = UDim2.fromOffset(550, 420), -- أبعاد النافذة (العرض، الارتفاع)
-    Theme = "Dark",                 -- المظهر الداكن والأنيق
-    Transparent = true              -- تفعيل خاصية الشفافية العصرية
+    Title = "Gear Tower Hub",
+    Icon = "gamepad",
+    Author = "Programming Expert",
+    Folder = "GearTowerConfig",
+    Size = UDim2.fromOffset(550, 420),
+    Theme = "Dark",
+    Transparent = true
 })
 
--- 2. إنشاء التبويب الرئيسي (Tab) للتنقل داخل الواجهة
 local MainTab = Window:Tab({
-    Title = "الميزات الرئيسية",
+    Title = "Main Features",
     Icon = "home"
 })
 
--- 3. قسم الحصول على الأدوات (Tools Section)
 local ToolsSection = MainTab:Section({
-    Title = "قسم الأدوات والأسلحة"
+    Title = "Tools & Weapons"
 })
 
--- زر الحصول على سلاح الليزر
 ToolsSection:Button({
-    Title = "الحصول على Hyper Laser Gun",
-    Desc = "يمنحك سلاح الليزر الخارق فوراً في اللعبة",
+    Title = "Get Hyper Laser Gun",
+    Desc = "Instantly grants you the Hyper Laser Gun in-game",
     Callback = function()
         local args = {"claimTool", "Hyper Laser Gun"}
         mapManagerRemote:FireServer(unpack(args))
         
-        -- إشعار منبثق يؤكد للمستخدم نجاح الإرسال
         WindUI:Notify({
-            Title = "تم بنجاح",
-            Content = "تم الحصول على Hyper Laser Gun!",
+            Title = "Success",
+            Content = "Hyper Laser Gun has been obtained!",
             Duration = 3
         })
     end
 })
 
--- زر الحصول على أداة Whirlpool Slap
 ToolsSection:Button({
-    Title = "الحصول على Whirlpool Slap",
-    Desc = "يمنحك أداة Whirlpool Slap تلقائياً",
+    Title = "Get Rainbow Carpet",
+    Desc = "Instantly grants you the Rainbow Carpet in-game",
+    Callback = function()
+        local args = {"claimTool", "Rainbow Carpet"}
+        mapManagerRemote:FireServer(unpack(args))
+        
+        WindUI:Notify({
+            Title = "Success",
+            Content = "Hyper Laser Gun has been obtained!",
+            Duration = 3
+        })
+    end
+})
+
+ToolsSection:Button({
+    Title = "Get Rainbow Slap",
+    Desc = "Automatically grants you the Rainbow Slap tool, (TEST)",
+    Callback = function()
+        local args = {"claimTool", "Rainbow Slap"}
+        mapManagerRemote:FireServer(unpack(args))
+        
+        WindUI:Notify({
+            Title = "Success",
+            Content = "Whirlpool Slap has been obtained!",
+            Duration = 3
+        })
+    end
+})
+
+ToolsSection:Button({
+    Title = "Get Whirlpool Slap",
+    Desc = "Automatically grants you the Whirlpool Slap tool",
     Callback = function()
         local args = {"claimTool", "Whirlpool Slap"}
         mapManagerRemote:FireServer(unpack(args))
         
         WindUI:Notify({
-            Title = "تم بنجاح",
-            Content = "تم الحصول على Whirlpool Slap!",
+            Title = "Success",
+            Content = "Whirlpool Slap has been obtained!",
             Duration = 3
         })
     end
 })
 
--- 4. قسم الإدارة والعملات (Admin & Coins Section)
 local AdminSection = MainTab:Section({
-    Title = "الإدارة والعملات النقدية"
+    Title = "Admin & Coins"
 })
 
--- زر تفعيل رتبة المود
 AdminSection:Button({
-    Title = "تفعيل رتبة Mod Admin",
-    Desc = "تفعيل صلاحيات الـ Mod مجاناً وبدون تكلفة",
+    Title = "Activate Mod Admin",
+    Desc = "Activate Mod permissions for free",
     Callback = function()
         local args = {"buyAdmin", "Mod", 0}
         mapManagerRemote:FireServer(unpack(args))
         
         WindUI:Notify({
-            Title = "تم بنجاح",
-            Content = "تم تفعيل رتبة المود بنجاح!",
+            Title = "Success",
+            Content = "Mod rank activated successfully!",
             Duration = 3
         })
     end
 })
 
--- زر الحصول على العملات
 AdminSection:Button({
-    Title = "الحصول على 8K عملة مجانية",
-    Desc = "إضافة 8000 عملة نقدية إلى رصيدك باللعبة",
+    Title = "Get 8K Free Coins",
+    Desc = "Add 8,000 coins to your in-game balance",
     Callback = function()
         local args = {"claimCoins", "8kCoinsGiver"}
         mapManagerRemote:FireServer(unpack(args))
         
         WindUI:Notify({
-            Title = "تم بنجاح",
-            Content = "تمت إضافة 8,000 عملة بنجاح!",
+            Title = "Success",
+            Content = "8,000 coins added successfully!",
             Duration = 3
         })
     end
 })
 
--- 5. قسم التحكم السريع المختصر (Quick Actions)
 local QuickSection = MainTab:Section({
-    Title = "التحكم السريع"
+    Title = "Quick Actions"
 })
 
--- زر لتشغيل جميع الأوامر دفعة واحدة اختصاراً للوقت
 QuickSection:Button({
-    Title = "تفعيل كل الميزات معاً 🚀",
-    Desc = "يقوم بإرسال كافة الأوامر السابقة دفعة واحدة تلقائياً بالترتيب",
+    Title = "Activate All Features 🚀",
+    Desc = "Executes all the above commands sequentially automatically",
     Callback = function()
         mapManagerRemote:FireServer(unpack({"claimTool", "Hyper Laser Gun"}))
-        task.wait(0.1) -- فترات انتظار قصيرة جداً لمنع الضغط العالي على السيرفر
+        task.wait(0.1)
         mapManagerRemote:FireServer(unpack({"claimTool", "Whirlpool Slap"}))
         task.wait(0.1)
         mapManagerRemote:FireServer(unpack({"buyAdmin", "Mod", 0}))
@@ -116,8 +133,8 @@ QuickSection:Button({
         mapManagerRemote:FireServer(unpack({"claimCoins", "8kCoinsGiver"}))
         
         WindUI:Notify({
-            Title = "نجاح شامل",
-            Content = "تم تفعيل جميع الأدوات والعملات معاً بنجاح!",
+            Title = "Global Success",
+            Content = "All tools and coins have been successfully activated!",
             Duration = 4
         })
     end
